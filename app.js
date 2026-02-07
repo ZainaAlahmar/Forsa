@@ -98,13 +98,13 @@ const state = {
     market: "",
     device: "",
   },
-  majorHubTab: "community", // Set default tab to community
+  majorHubTab: "community", 
   communityPosts: [
     {
       id: 1,
       author: "Ahmed (High School)",
       role: "Student",
-      major: "T", // Tech
+      major: "T", 
       text: "Is Computer Science math-heavy at Birzeit? I'm worried about Calculus.",
       likes: 12,
       replies: [
@@ -133,12 +133,7 @@ const state = {
 const ASSESSMENT_PAGE_SIZE = 3;
 const PSYCHO_PAGE_SIZE = 3;
 
-// Module boundaries:
-// - Data: static datasets + constants
-// - RAG: retrieval + explanation helpers
-// - Logic: scoring + recommendations
-// - UI: render/bind only (no heavy logic)
-// - Core: routing + persistence
+
 
 
 
@@ -1736,17 +1731,16 @@ function restoreAfterGameReturn() {
     saved = null;
   }
 
-  // Clean URL (remove fromGame so it doesn't keep restoring)
+
   url.searchParams.delete("fromGame");
   window.history.replaceState({}, "", url.toString());
 
   if (!saved) return;
 
-  // Restore state
+
   state.selectedMajorId = saved.selectedMajorId || state.selectedMajorId;
   state.majorHubTab = saved.majorHubTab || "game";
 
-  // Make sure game state object exists
   if (!state.game) state.game = { unlockedLevelByMajor: {}, completedByMajor: {}, starsByMajor: {}, xp: 0 };
   if (!state.game.unlockedLevelByMajor) state.game.unlockedLevelByMajor = {};
   if (!state.game.completedByMajor) state.game.completedByMajor = {};
@@ -3169,8 +3163,8 @@ function renderMajor() {
     return;
   }
 
-  // Get Major Data
-  const major = getMajorById(majorId); // Uses your existing helper
+  
+  const major = getMajorById(majorId); 
   const exp = majorExperience[majorId] || { story: {}, facts: {}, levels: [], workshops: [], videos: [] };
 
   const story = exp.story?.[state.lang] || (state.lang === "en" ? "Explore this major." : "استكشف هذا التخصص.");
@@ -3293,13 +3287,13 @@ function renderMajor() {
   `;
 }
 
-// Helper to switch tabs
+
 function switchMajorTab(tabName) {
   state.majorHubTab = tabName;
   renderMajor();
 }
 
-// Helper to toggle saved items
+
 function toggleSaveItem(item, removeIdx = null) {
   if (removeIdx !== null) {
     state.savedItems.splice(removeIdx, 1);
@@ -3310,9 +3304,7 @@ function toggleSaveItem(item, removeIdx = null) {
   }
   renderMajor();
 }
-/* -------------------------------------------------------------------------- */
-/* COMMUNITY FEATURE LOGIC                                                    */
-/* -------------------------------------------------------------------------- */
+
 
 function renderCommunity() {
   const posts = state.communityPosts; 
@@ -3418,7 +3410,7 @@ function renderPostCard(post) {
   `;
 }
 
-// Logic Functions
+
 function addCommunityPost() {
   if (isUniversityStudent()) return;
   const input = document.getElementById('new-post-text');
