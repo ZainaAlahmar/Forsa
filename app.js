@@ -4421,7 +4421,6 @@ function appendChatMessage(role, text) {
   state.chat.messages.push({ role, text });
 }
 
-// Future hook: register additional retrieval sources without changing logic.
 const RAG_SOURCES = [
   { id: "university_kb", description: "University programs, admission, study load, learning mode" },
   { id: "labor_market", description: "Market demand and remote-friendly indicators" },
