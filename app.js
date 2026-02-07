@@ -5453,7 +5453,7 @@ document.addEventListener("DOMContentLoaded", () => {
   setRoute("splash");
 });
 
-// Public modules map for clearer architecture boundaries.
+
 const AppModules = Object.freeze({
   data: {
     UNIVERSITY_KB,
