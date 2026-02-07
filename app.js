@@ -104,7 +104,7 @@ const state = {
       id: 1,
       author: "Ahmed (High School)",
       role: "Student",
-      major: "T", 
+      major: "T",
       text: "Is Computer Science math-heavy at Birzeit? I'm worried about Calculus.",
       likes: 12,
       replies: [
@@ -119,7 +119,7 @@ const state = {
       id: 2,
       author: "Layan (Grade 11)",
       role: "Student",
-      major: "H", // Health
+      major: "H", 
       text: "What is the difference between Nursing and Midwifery in terms of daily work?",
       likes: 5,
       replies: []
@@ -132,8 +132,6 @@ const state = {
 
 const ASSESSMENT_PAGE_SIZE = 3;
 const PSYCHO_PAGE_SIZE = 3;
-
-
 
 
 
@@ -1731,12 +1729,11 @@ function restoreAfterGameReturn() {
     saved = null;
   }
 
-
+  
   url.searchParams.delete("fromGame");
   window.history.replaceState({}, "", url.toString());
 
   if (!saved) return;
-
 
   state.selectedMajorId = saved.selectedMajorId || state.selectedMajorId;
   state.majorHubTab = saved.majorHubTab || "game";
@@ -1746,7 +1743,6 @@ function restoreAfterGameReturn() {
   if (!state.game.completedByMajor) state.game.completedByMajor = {};
   if (!state.game.starsByMajor) state.game.starsByMajor = {};
 
-  // Go to the exact screen
   setRoute(saved.route || "major");
 }
 
@@ -3152,7 +3148,7 @@ function renderMajor() {
 
   const majorId = state.selectedMajorId;
 
-  // Handle case where no major is selected
+
   if (!majorId) {
     el.innerHTML = `
       <div class="card center">
@@ -3163,7 +3159,6 @@ function renderMajor() {
     return;
   }
 
-  
   const major = getMajorById(majorId); 
   const exp = majorExperience[majorId] || { story: {}, facts: {}, levels: [], workshops: [], videos: [] };
 
@@ -3171,13 +3166,13 @@ function renderMajor() {
   const facts = exp.facts?.[state.lang] || [];
   const videos = exp.videos || [];
   
-  // Logic for Game/Levels
+
   if (!state.game) state.game = { unlockedLevelByMajor: {}, completedByMajor: {}, starsByMajor: {}, xp: 0 };
   if (!state.game.unlockedLevelByMajor[majorId]) state.game.unlockedLevelByMajor[majorId] = 1;
   const nextLevelId = state.game.unlockedLevelByMajor[majorId];
   const lvl = (exp.levels || []).find((x) => x.id === nextLevelId) || (exp.levels || [])[0];
 
-  // Helper to render Save Button
+
   function renderSaveButton(item) {
     const exists = state.savedItems.some((x) => x.type === item.type && x.title === item.title);
     return `
@@ -4673,7 +4668,7 @@ function renderRecommendations() {
 
   bindChatbotHandlers(el, chatContext);
 }
-//1
+
 const gameContent = {
   se: {
     levels: {
